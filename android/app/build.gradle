@@ -24,6 +24,9 @@ android {
             keyPassword 'NeonStickWar2026!'
         }
     }
+    aaptOptions {
+        noCompress 'resources.arsc'
+    }
     buildTypes {
         release {
             minifyEnabled false
