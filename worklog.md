@@ -208,3 +208,63 @@ Stage Summary:
 - AdMob ads configured for production: isTesting=false, correct ad IDs
 - Real ads will show once AdMob account is verified and app is published on Play Store
 - New APK (6.1MB) and AAB (6.3MB) in game-builds/ folder
+
+---
+Task ID: 5
+Agent: Main
+Task: Green portal enhancement + level distance increase + "App Not Installed" fix
+
+Work Log:
+1. Portal Enhancement (in 0cf1o-rq41zxz.js):
+   - Active portal radius increased: 35→55 (outer glow), 18→35 (middle solid), 22+5→42+8 (ring), 12+3→28+5 (inner ring)
+   - Shadow blur increased: 12→25 for more visible glow
+   - Added "NEXT" and "LEVEL ▶" floating text above portal
+   - Portal Y offset changed from -30 to -40 for better positioning
+   - Line widths increased for more visible strokes
+
+2. Inactive Portal Enhancement:
+   - Text changed from "CLEAR ALL"/"ENEMIES" to "DEFEAT ALL"/"ENEMIES ▼"
+   - Font size increased from 9px to 13px bold
+   - Shadow blur increased from 8 to 15
+   - Opacity increased from 0.4+0.2 to 0.6+0.3 for better visibility
+   - Arrow changed to big downward triangle (14px wide vs 10px)
+
+3. Portal Hitbox DOUBLED:
+   - Old: J.x-25, J.y-60, width=50, height=60
+   - New: J.x-60, J.y-100, width=120, height=100
+
+4. Magnetic Pull added:
+   - When portal is active and player within 150px, auto-draw player toward portal
+   - Pull speed: 3px/frame horizontal, 2px/frame vertical
+   - Distance check prevents jitter when very close (<5px)
+
+5. Off-screen Arrow Enhancement:
+   - Show distance threshold increased from 400px to 800px
+   - Arrow size increased (20px vs 15px)
+   - Shows "PORTAL ▶" text when portal is active (instead of just distance)
+   - Shows "ENTER ▶" when portal is on screen
+   - Font size increased to bold 10px/9px
+
+6. Level Travel Distance DOUBLED:
+   - Level 1-3: 1900→3800, 2000→4000, 2100→4200
+   - Level 4-10: 2200→4400 to 2500→5000
+   - Level 11-50: 2550→5100 to 5000→10000
+   - Level 51-200: 4530→9060 to 9000→18000
+   - Level 201+: up to 40000 (was 20000)
+
+7. "App Not Installed" FIX:
+   - ROOT CAUSE: resources.arsc was compressed (Defl:N 74%) in the APK
+   - Android REQUIRES resources.arsc to be stored uncompressed (memory-mapped)
+   - Also baseline.prof and baseline.profm need to be uncompressed
+   - Rebuilt APK with zip -0 flag for resources.arsc and baseline.prof
+   - Restored META-INF/services/ files (Kotlin coroutines ServiceLoader configs)
+   - Verified resources.arsc shows "Stored 0%" after apksigner
+   - APK now has 601 files (was 555 - restored missing META-INF version files)
+
+Stage Summary:
+- Green portal now 3x bigger with "NEXT LEVEL ▶" text, magnetic pull, and doubled hitbox
+- Level distances doubled for longer gameplay
+- "App Not Installed" FIXED: resources.arsc now properly stored uncompressed
+- APK: v1+v2+v3 signing, 601 files, 6.5MB
+- AAB: PKCS7 signed, 6.6MB
+- All previous bug fixes preserved

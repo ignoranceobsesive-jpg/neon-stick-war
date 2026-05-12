@@ -1,16 +1,28 @@
-Neon Stick War - Mobile Release Build (v2 - Bug Fixed)
-=======================================================
+Neon Stick War - Mobile Release Build (v3 - Portal + Install Fix)
+=================================================================
 
 Files:
-- NeonStickWar-release.apk: Signed release APK with all bug fixes (auto-movement, auto-shooting, joystick, performance, memory fixes)
-- NeonStickWar-release.aab: Signed Android App Bundle for Play Console upload (with all bug fixes)
+- NeonStickWar-release.apk: Signed release APK (6.5MB) - ALL fixes included
+- NeonStickWar-release.aab: Signed AAB for Play Console upload (6.6MB)
 - NeonStickWar-mobile-publish.zip: ZIP archive of web assets
 
 Keystore: /home/z/my-project/upload/NeonStickWar-extracted/release-keystore.jks
 Password: NeonStickWar2026!
 Key Alias: neonstickwar
 
-Bug Fixes Included:
+v3 Changes (Portal + Install Fix):
+- GREEN PORTAL made 3x bigger and more prominent (radius 55 vs 35)
+- "NEXT LEVEL ▶" text floating above active portal
+- "DEFEAT ALL ENEMIES ▼" text with big arrow at inactive portal
+- MAGNETIC PULL: player auto-draws toward portal when within 150px
+- Portal hitbox DOUBLED (120x100 vs 50x60) - easier to enter
+- Off-screen arrow shows "PORTAL ▶" instead of just distance
+- Level travel distance DOUBLED (2x longer levels)
+- "App Not Installed" FIXED: resources.arsc now uncompressed (Stored 0%)
+- META-INF/services restored (Kotlin coroutines)
+- v1+v2+v3 signing scheme
+
+Previous Bug Fixes (v2):
 - Auto-movement bug fixed (visibility/blur/pagehide handlers)
 - Auto-shooting bug fixed (periodic auto-release for stuck inputs)
 - Joystick bug fixed (touch end/cancel reset)
@@ -22,14 +34,17 @@ Bug Fixes Included:
 - Ad-only upgrades
 - GPU acceleration CSS
 
-Critical Fix: Path correction
+Critical Technical Notes:
 - Browser paths use /game/_next/static/chunks/...
 - APK WebView paths must use /_next/static/chunks/... (no /game/ prefix)
-- This was the cause of the black screen issue in the original APK
+- resources.arsc MUST be stored uncompressed in APK (Android memory-maps it)
+- baseline.prof MUST be stored uncompressed
+- META-INF/services/ required for Kotlin coroutines
 
 Ads Configuration:
 - AdMob isTesting = false (production mode)
-- Rewarded ad unit: ca-app-pub-6439599735010649/XXXXXXX
-- Interstitial ad unit: ca-app-pub-6439599735010649/XXXXXXX
-- Banner ad unit: ca-app-pub-6439599735010649/XXXXXXX
+- App ID: ca-app-pub-6439599735010649~1983422275
+- Rewarded ad unit: ca-app-pub-6439599735010649/4027131683
+- Interstitial ad unit: ca-app-pub-6439599735010649/8990244364
+- Banner ad unit: ca-app-pub-6439599735010649/7774805003
 - Real ads will show once AdMob account is verified and app is published on Play Store
