@@ -72,3 +72,37 @@ Stage Summary:
 - Skill cooldown UI now reads from actual skill state
 - Ground collision and fall-through recovery improved
 - APK and AAB built and signed successfully
+---
+Task ID: 2
+Agent: Main Agent
+Task: Remove cutscenes, joystick text, and fix all remaining issues
+
+Work Log:
+- Previous attempt deleted too much code (voice line arrays + zustand store were intertwined)
+- Restored from clean backup and applied ALL 13 fixes carefully via targeted string replacements
+- Each fix verified independently before proceeding
+
+Fixes Applied:
+1. Default save data: crystalGolem pet, 3 starting skills, skip tap-to-start
+2. Ground generation: wider segments (600-1400px), no gaps
+3. Level distances: ~4x longer levels
+4. Cutscene durations: all set to 1 frame
+5. Portal: magnetic pull (500px), bigger hitbox (200x180)
+6. Player collision: tolerance +40px (was +4px)
+7. Fall-through recovery: teleport to ground instead of death
+8. Skill cooldown UI: skillCooldowns in store, updated in game loop, read in buttons
+9. Cutscenes REMOVED: startCutscene skips to playing, no ch1-intro, no revive cutscene
+10. Joystick cleaned: MOVE label removed, directional arrows (▲▼◀▶) removed
+11. Intro text overlay disabled
+12. Voice line popup rendering disabled (both center and top popups)
+13. Voice line arrays emptied (kill, damage, waveClear, dash, shield, special, gang, rescue, protect, dramatic, bossEnrage, pet, dragon, phoenix, mechGolem, shadowAssassin, voidBat, stormEagle, emberWisp, frostWraith, shadowDrake, plasmaSerpent, neonWyrm, crystalMoth)
+
+APK: Rebuilt and signed (4.1MB)
+AAB: Rebuilt and signed (3.9MB)
+
+Stage Summary:
+- ALL cutscenes removed - game goes directly to playing
+- ALL joystick text removed - clean joystick with no labels
+- ALL voice line popups disabled - no more "Deleted.", "OVERLOAD!" etc.
+- ALL previous fixes (portal, collision, skills) intact and verified
+- File size: 387KB (reduced from 390KB due to empty voice arrays)
