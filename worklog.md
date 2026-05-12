@@ -147,3 +147,64 @@ Stage Summary:
 - Parent wrapper (page.tsx) updated with input reset handlers
 - All bugs systematically addressed at root cause level
 - No temporary workarounds - all fixes are structural
+
+---
+Task ID: 2
+Agent: general-purpose
+Task: Rebuild APK and AAB with fixed game code
+
+Work Log:
+- Extracted original APK from /home/z/my-project/upload/NeonStickWar-extracted/NeonStickWar-release.apk
+- Examined original APK structure: found AndroidManifest.xml, classes.dex, res/, assets/public/ with _next/static/chunks/
+- Verified original index.html already uses /_next/ paths (correct for Capacitor WebView)
+- Created new web assets directory at /tmp/apk-rebuild/new-assets/
+- Copied 18 fixed JS chunks from /home/z/my-project/public/game/_next/static/chunks/ (excluding .bak)
+- Copied 3 build manifest files from /home/z/my-project/public/game/_next/static/A4x4SCfKhBobTqAQHWEk9/
+- Created corrected index.html by replacing all 38 occurrences of /game/_next/ with /_next/ (CRITICAL fix for black screen)
+- Preserved mobile-specific enhancements: touch management script, CSS optimizations, apple-mobile-web-app meta tags
+- Copied static files from original: 404.html, __next.*.txt, cordova.js, cordova_plugins.js, logo.svg, robots.txt, index.txt, _not-found.*
+- Copied non-public assets: capacitor.config.json, capacitor.plugins.json, native-bridge.js, dexopt/
+- Copied APK infrastructure: AndroidManifest.xml, classes*.dex, res/, resources.arsc, kotlin/, org/, *.properties
+- Built unsigned APK (6.1MB) using zip
+- Zipaligned with ~/android-sdk/build-tools/35.0.0/zipalign
+- Signed APK with apksigner using release keystore (SHA-256: 29a980a79bfb3d67fc18a7a698367b3aeb1ac3cc02255acef4d081c894cb472d)
+- Verified APK signature with apksigner verify --print-certs
+- Extracted original AAB from /home/z/my-project/upload/NeonStickWar-extracted/NeonStickWar-release.aab
+- Replaced web assets in AAB's base/assets/public/ with same corrected files
+- Built unsigned AAB (6.2MB) using zip
+- Signed AAB using Python cryptography library with PKCS7/JAR signing (jarsigner not available in JRE-only environment)
+- Exported keystore to PKCS12 format via keytool, then used Python's cryptography.pkcs7 module
+- Copied all 3 outputs to /home/z/my-project/game-builds/: APK, AAB, and mobile-publish ZIP
+- Updated README.md in game-builds with build details and bug fix documentation
+- Final verification confirmed: both APK and AAB contain index.html with 0 /game/_next/ and 38 /_next/ references
+
+Stage Summary:
+- NeonStickWar-release.apk (6.1MB) - Signed, zipaligned, verified. Uses /_next/ paths correctly.
+- NeonStickWar-release.aab (6.3MB) - Signed with PKCS7. Uses /_next/ paths correctly.
+- NeonStickWar-mobile-publish.zip (19MB) - Full web assets archive.
+- Black screen issue fixed by correcting all /game/_next/ → /_next/ paths in index.html for Capacitor WebView compatibility.
+- All bug-fixed JS chunks from public/game/_next/static/chunks/ included in both APK and AAB.
+
+---
+Task ID: 4
+Agent: Main
+Task: Verify rebuilt APK - fix black screen, verify ads configuration
+
+Work Log:
+- Diagnosed black screen root cause: public/game/index.html used /game/_next/ paths which don't resolve in Capacitor's Android WebView (no web server)
+- Original APK's index.html uses /_next/ paths which resolve correctly via Capacitor's local server
+- Downloaded and installed Android SDK command-line tools to ~/android-sdk/
+- Installed build-tools;35.0.0 and platforms;android-35
+- Rebuilt APK with corrected index.html (all /game/_next/ → /_next/, 38 replacements)
+- Signed with apksigner using existing release keystore
+- Verified APK signature: CN=Neon Stick War, SHA-256: 29a980a79bfb3d67fc18a7a698367b3aeb1ac3cc02255acef4d081c894cb472d
+- Verified 18 fixed JS chunks included with all bug fixes (visibilitychange, __resetAllInputs, __activeTouches, touchcancel)
+- Verified AdMob configuration: isTesting=false, all 3 ad unit IDs present in JS code
+- Verified Capacitor config: AdMob plugin registered, appId correct, isTesting=false
+
+Stage Summary:
+- Black screen FIXED: paths corrected from /game/_next/ to /_next/ for APK/WebView compatibility
+- All bug fixes included: auto-movement, auto-shooting, joystick, performance, memory, touch management
+- AdMob ads configured for production: isTesting=false, correct ad IDs
+- Real ads will show once AdMob account is verified and app is published on Play Store
+- New APK (6.1MB) and AAB (6.3MB) in game-builds/ folder
