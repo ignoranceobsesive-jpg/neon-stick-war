@@ -1,0 +1,11 @@
+[matchmaking-service] Installing dependencies...
+bun install v1.3.13 (bf2e2cec)
+
++ cors@2.8.6
++ socket.io@4.8.3
+
+22 packages installed [103.00ms]
+[matchmaking-service] Running bun run dev...
+$ bun --hot index.ts
+[NEON STICKMAN] Matchmaking server running on port 3003
+[NEON STICKMAN] Waiting for players...
