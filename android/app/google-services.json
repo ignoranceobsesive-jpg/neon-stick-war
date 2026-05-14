@@ -1,0 +1,34 @@
+{
+  "project_info": {
+    "project_number": "551814219382",
+    "project_id": "neon-stickman-stickwar",
+    "storage_bucket": "neon-stickman-stickwar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551814219382:android:a62a5cfe71571b90a74157",
+        "android_client_info": {
+          "package_name": "com.neonstickwar.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551814219382-ef3cgt7rqdp4dr6d7q9h3gp1tk1c0kbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7qhVVSmi6wc9wFTG8_mpbE42OkOzGpPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

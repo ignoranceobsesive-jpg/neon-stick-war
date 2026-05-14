@@ -1,0 +1,58 @@
+{
+  // TypeScript / JavaScript settings
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "javascript.validate.enable": true,
+  "typescript.validate.enable": true,
+  
+  // Editor settings for working with minified code
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 200,
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  
+  // Search settings - crucial for finding things in minified code
+  "search.exclude": {
+    "**/builds/**": true,
+    "**/*.apk": true,
+    "**/*.aab": true
+  },
+  "search.include": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.md"
+  ],
+  "search.maintainFileSearchCache": true,
+  
+  // File associations
+  "files.associations": {
+    "game-full.js": "javascript",
+    "*.beautified.js": "javascript"
+  },
+  
+  // Large file handling
+  "files.maxMemoryForLargeFilesMB": 4096,
+  "editor.largeFileOptimizations": false,
+  
+  // Formatting - don't auto-format minified files!
+  "editor.formatOnSave": false,
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  
+  // Emmet disabled for minified code
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  
+  // Terminal
+  "terminal.integrated.env.linux": {
+    "JAVA_HOME": "/home/z/.jdks/jdk-21.0.11"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "recommendations": [
+    // Core editing
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    
+    // JavaScript/TypeScript
+    "ms-vscode.vscode-typescript-next",
+    
+    // Search & Navigation
+    "wk-j.search-in-current-file",
+    "ryu1kn.partial-diff",
+    
+    // React
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss",
+    
+    // Git
+    "eamodio.gitlens",
+    
+    // Markdown docs
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    
+    // Useful for minified code
+    "hookyqr.beautify",
+    "pnp.polacode",
+    
+    // Android / Capacitor
+    "ms-android.vscode-android",
+    
+    // Debugging
+    "msjsdiag.debugger-for-chrome"
+  ]
+}

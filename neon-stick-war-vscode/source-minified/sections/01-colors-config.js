@@ -1,0 +1,5 @@
+// Section 01: Color Constants & Upgrade Configs
+// Beautified lines: 94-142
+// Contains: Color palette (n=CYAN, i=MAGENTA, etc.), weapon upgrade definitions (y)
+
+#00ffff",i="#ff00ff",s="#00ff66",c="#ff6600",d="#ffff00",h="#aa00ff",f="#ff3333",u="#050510",m="#ffd700",x="#ff69b4",p="#4488ff",g="#ffffff",y={damage:{name:"Damage",baseCost:500,costMultiplier:1.5,effectPerLevel:.15,maxLevel:100},fireRate:{name:"Fire Rate",baseCost:800,costMultiplier:1.6,effectPerLevel:.1,maxLevel:100},bulletSpeed:{name:"Bullet Speed",baseCost:600,costMultiplier:1.4,effectPerLevel:.12,maxLevel:100},bulletSize:{name:"Bullet Size",baseCost:400,costMultiplier:1.3,effectPerLevel:.1,maxLevel:100},criticalChance:{name:"Critical Hit",baseCost:1500,costMultiplier:2,effectPerLevel:.02,maxLevel:50}};function b(e,t){let o=y[e];return Math.floor(o.baseCost*Math.pow(o.costMultiplier,t))}let v=[{id:"

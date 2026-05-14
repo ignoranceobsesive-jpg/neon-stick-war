@@ -1,0 +1,67 @@
+{
+  "folders": [
+    {
+      "name": "📖 Documentation",
+      "path": ".",
+      "description": "Project documentation and guides"
+    },
+    {
+      "name": "🔧 Source (Reconstructed)",
+      "path": "source-reconstructed",
+      "description": "Partially reconstructed TypeScript source for reference"
+    },
+    {
+      "name": "⚡ Source (Minified - RUNNING CODE)",
+      "path": "source-minified",
+      "description": "The ACTUAL running game code - edit game-full.js to make changes"
+    },
+    {
+      "name": "📱 Android Project",
+      "path": "android-project",
+      "description": "Android/Capacitor configuration files"
+    },
+    {
+      "name": "📦 Builds",
+      "path": "builds",
+      "description": "Pre-built APK and AAB files"
+    },
+    {
+      "name": "🛠 Scripts",
+      "path": "scripts",
+      "description": "Build helper scripts"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/*.apk": true,
+      "**/*.aab": true,
+      "**/*.jks": true
+    },
+    "search.exclude": {
+      "**/builds/**": true,
+      "**/*.apk": true,
+      "**/*.aab": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "hookyqr.beautify",
+      "yzhang.markdown-all-in-one"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Game in Chrome",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}",
+        "sourceMaps": false
+      }
+    ]
+  }
+}
